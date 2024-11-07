@@ -197,3 +197,71 @@ const greetStudentTotTimes = function (name, numberOfTimes) {
 
 greetStudentTotTimes('Daniel', 3)
 greetStudentTotTimes('Giulio', 5)
+
+// immaginiamo di avere un array di città
+const cities = ['rome', 'madrid', 'oslo', 'paris', 'berlin']
+console.log('cities', cities)
+
+// noi vogliamo ottenere il seguente risultato: una stringa contenente tutte le INIZIALI di queste città, ordinate secondo l'ordine alfabetico e rese maiuscole
+
+// "BMOPR"
+
+// per ottenere questo risultato spezziamo i passaggi in funzioni piccole, atomiche (fanno una cosa sola)
+
+// funzione che dato un array di stringhe, ritorna un array di sole iniziali
+const justTheInitials = function (arrayOfStrings) {
+  // estrapoliamo solo le iniziali
+  const justFirstLetters = []
+  for (let i = 0; i < arrayOfStrings.length; i++) {
+    justFirstLetters.push(arrayOfStrings[i].charAt(0))
+  }
+  //   console.log(justFirstLetters) // un array con tutte le iniziali
+  // const justFirstLetters = arrayOfStrings.map(element => {
+  //     return element.charAt(0)
+  // })
+  return justFirstLetters
+}
+
+const sortLetters = function (arrayDiLettere) {
+  // riceve un array di caratteri, e lo ordina in ordine alfabetico
+  const arrayOrdinatoDiLettere = arrayDiLettere.sort()
+  return arrayOrdinatoDiLettere
+}
+
+const transformToString = function (orderedInitials) {
+  let bigString = ''
+  for (let i = 0; i < orderedInitials.length; i++) {
+    bigString = bigString + orderedInitials[i]
+    // bigString += orderedInitials[i] <- pro version :)
+  }
+  // alla fine del primo ciclo bigString vale 'b'
+  // alla fine del secondo ciclo bigString vale 'bm'
+  // alla fine del terzo ciclo bigString vale 'bmo'
+  // alla fine del quarto ciclo bigString vale 'bmop'
+  // alla fine del quinto ciclo bigString vale 'bmopr'
+  return bigString
+}
+
+const transformToUppercase = function (stringOfInitials) {
+  // trasformare in maiuscolo
+  const uppercase = stringOfInitials.toUpperCase()
+  return uppercase
+}
+
+const iniziali = justTheInitials(cities) // ["r", "m", "o", "p", "b"]
+console.log('iniziali', iniziali)
+
+// ora ho l'array di iniziali delle città! vado ad ordinarlo:
+
+const inizialiOrdinate = sortLetters(iniziali) // ["b", "m", "o", "p", "r"]
+console.log('inizialiOrdinate', inizialiOrdinate)
+
+// abbiamo le iniziali ordinate sotto forma di array! trasformiamole in stringa unica
+
+const initialsString = transformToString(inizialiOrdinate) // 'bmopr'
+console.log('initialsString', initialsString)
+
+// ultimo passaggio, ho la string in minuscolo e la voglio maiuscola!
+
+const finalResult = transformToUppercase(initialsString) // 'BMOPR'
+console.log('finalResult', finalResult)
