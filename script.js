@@ -101,3 +101,99 @@ const dado = Math.ceil(Math.random() * 6) // 0,000001 * 6 fino a 0,999999 * 6
 // 0,000006 - 5,99999999
 // 1 - 6
 console.log(dado)
+
+arrOfNames.forEach((element, i) => {
+  // qui dentro finite tante volte quanto è la lunghezza dell'array
+  console.log('ELEMENT', element, i)
+})
+
+// map TRASFORMA UN ARRAY IN UN NUOVO ARRAY
+const maiuscoli = arrOfNames.map((element) => {
+  return element.charAt(0).toUpperCase() + element.slice(1, element.length)
+  // 'S' + 'tefano
+})
+
+console.log('MAIUSCOLI', maiuscoli)
+
+// filter ritorna una PORZIONE di un array
+
+const lastIsA = arrOfNames.filter((element) => {
+  // nei filter per ogni elemento dovete ritornare TRUE o FALSE
+  // se tornate TRUE l'elemento FARÀ PARTE di lastIsA, altrimenti no
+  // element finisce con 'a' ?
+  // element.slice(element.length - 1, element.length)
+
+  let last = element.charAt(element.length - 1) === 'a' // true o false
+  if (last) {
+    return true
+  } else {
+    return false
+  }
+})
+
+console.log('lastIsA', lastIsA)
+
+// OGGETTI
+// un oggetto in JS è una rappresentazione di un oggetto della vita reale, fatto da caratteristiche e proprietà
+
+const myComputer = {
+  // chiave: valore
+  color: 'black',
+  screenSize: 15,
+  brand: 'Microsoft',
+  bello: true,
+  os: {
+    brand: 'Microsoft',
+    version: 11,
+  },
+  usages: ['play', 'work', 'code'],
+}
+
+myComputer.brand // 'Microsoft'
+myComputer['bello'] // true
+
+myComputer.age = 2
+delete myComputer.bello // rimuovo la proprietà "bello"
+
+myComputer.usages[2]
+myComputer.usages[myComputer.usages.length - 1] // tornerebbe sempre l'ULTIMO elemento di usages
+
+// myComputer.usages[myComputer.usages.length - 1] = 'Giuseppe'
+
+myComputer.usages.push('Giuseppe')
+// elimino "word"
+myComputer.usages.splice(1, 1)
+console.log(myComputer)
+
+console.log('KEYS', Object.keys(myComputer)) // ['color', 'screenSize', 'brand', 'os', 'usages]
+console.log('VALUES', Object.values(myComputer))
+
+// FUNZIONI
+// le funzioni in JS servono per raggruppare del codice sotto un unico blocco di istruzioni, richiamabile attraverso il nome della funzione
+
+const bark = function () {
+  console.log('BAUBAU')
+  console.log('BAUBAU')
+}
+
+bark()
+bark()
+
+const greetStudent = function (name) {
+  const string = 'Ciao, ' + name + '!'
+  //   const string = `Ciao, ${name}!`
+  console.log('string', string)
+}
+
+greetStudent('Stefano')
+greetStudent('Andrea')
+greetStudent('Francesco')
+
+const greetStudentTotTimes = function (name, numberOfTimes) {
+  for (let i = 0; i < numberOfTimes; i++) {
+    console.log(`Ciao, ${name}!`)
+  }
+}
+
+greetStudentTotTimes('Daniel', 3)
+greetStudentTotTimes('Giulio', 5)
